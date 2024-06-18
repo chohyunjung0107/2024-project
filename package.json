@@ -1,4 +1,5 @@
 {
+  "homepage": "https://chohyunjung0107.github.io/2024-project/",
   "name": "0610-next-project",
   "version": "0.1.0",
   "private": true,
@@ -10,7 +11,7 @@
     "dev:next": "next dev",
     "dev:server": "node server/src/app.js",
     "export": "next export",
-    "deploy": "pnpm run build && pnpm run export && gh-pages -d out"
+    "deploy": "npm run build && gh-pages -d out"
   },
   "dependencies": {
     "cors": "^2.8.5",
