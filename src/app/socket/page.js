@@ -30,7 +30,7 @@ export default function Socket() {
     setLoading(true);
     try {
       const response = await fetch(
-        `${process.env.DB_HOST}:${process.env.DB_PORT}/api/users`
+        `http://${process.env.DB_HOST}:${process.env.DB_PORT}/api/users`
       );
       const result = await response.json();
 
@@ -46,7 +46,7 @@ export default function Socket() {
   const handlePostData = async () => {
     try {
       const response = await fetch(
-        `${process.env.DB_HOST}:${process.env.DB_PORT}/api/users`,
+        `http://${process.env.DB_HOST}:${process.env.DB_PORT}/api/users`,
         {
           method: "POST",
           headers: {
