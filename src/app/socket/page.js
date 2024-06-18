@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import io from "socket.io-client";
 import Loading from "../component/Loading";
 
-const SOCKET_SERVER_URL = "http://localhost:5000"; // 서버 URL을 설정하세요
+const SOCKET_SERVER_URL = "http://10.10.0.145:5000"; // 서버 URL을 설정하세요
 
 export default function Socket() {
   const [data, setData] = useState([]);

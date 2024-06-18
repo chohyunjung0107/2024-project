@@ -1,6 +1,6 @@
 import Image from "next/image";
 // import styles from "./page.module.css";
-import executeQuery from "../_lib/db";
+// import executeQuery from "../_lib/db";
 
 export default function Home() {
   return (
