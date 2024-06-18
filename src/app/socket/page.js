@@ -29,7 +29,9 @@ export default function Socket() {
   const getData = async () => {
     setLoading(true);
     try {
-      const response = await fetch("/api/users");
+      const response = await fetch(
+        `${process.env.DB_HOST}:${DB_PORT}/api/users`
+      );
       const result = await response.json();
 
       setData(result);
@@ -43,13 +45,16 @@ export default function Socket() {
   //POST
   const handlePostData = async () => {
     try {
-      const response = await fetch("/api/users", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ name: inputValue.isName }),
-      });
+      const response = await fetch(
+        `${process.env.DB_HOST}:${DB_PORT}/api/users`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ name: inputValue.isName }),
+        }
+      );
       if (!response.ok) {
         throw new Error("Network response was not ok");
       }
