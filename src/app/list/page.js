@@ -1,0 +1,9 @@
+import ls from "./style.module.scss";
+
+export default function ListPage() {
+  return (
+    <>
+      <div className={ls.test}>pages list</div>
+    </>
+  );
+}
