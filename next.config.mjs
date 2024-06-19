@@ -4,7 +4,7 @@ const nextConfig = {
     return [
       {
         source: "/:path*",
-        destination: "(전달받은 API 주소)/:path*",
+        destination: "10.10.0.145/:path*",
       },
     ];
   },
