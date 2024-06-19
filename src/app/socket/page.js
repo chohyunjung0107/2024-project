@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import io from "socket.io-client";
 import Loading from "../component/Loading";
 
-const SOCKET_SERVER_URL = "http://10.10.0.145:5000"; // 서버 URL을 설정하세요
+const SOCKET_SERVER_URL = "http://localhost:5000"; // 서버 URL을 설정하세요
 
 export default function Socket() {
   const [data, setData] = useState([]);
@@ -29,7 +29,7 @@ export default function Socket() {
   const getData = async () => {
     setLoading(true);
     try {
-      const response = await fetch(`http://10.10.0.145:3307/api/users`);
+      const response = await fetch(`/api/users`);
       const result = await response.json();
 
       setData(result);
@@ -43,7 +43,7 @@ export default function Socket() {
   //POST
   const handlePostData = async () => {
     try {
-      const response = await fetch(`http://10.10.0.145:3307/api/users`, {
+      const response = await fetch(`/api/users`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -129,8 +129,8 @@ export default function Socket() {
         {loading === true ? (
           <Loading />
         ) : (
-          data &&
-          data.map((v) => {
+          data.length > 0 &&
+          data?.map((v) => {
             return (
               <div key={v.id}>
                 <div>name : {v.name}</div>

@@ -10,7 +10,6 @@ const io = socketIO(server, {
   cors: { origin: "*", methods: ["GET", "POST"] },
   allowedHeaders: ["Content-Type"],
 });
-const handle = app.getRequestHandler();
 
 const port = 5000;
 
@@ -20,8 +19,6 @@ app.use(
     methods: ["GET", "POST", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"],
     credentials: true,
-  })(req, res, () => {
-    handle(req, res, parsedUrl);
   })
 );
 
