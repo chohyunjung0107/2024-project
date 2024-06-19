@@ -23,14 +23,34 @@ export async function GET(req) {
     // 데이터베이스에서 데이터를 쿼리
     const [rows] = await pool.query("SELECT * FROM test.test_table");
     // 쿼리 결과를 JSON 형태로 반환
-    return NextResponse.json(rows);
+
+    const response = NextResponse.json(rows);
+    response.headers.set("Access-Control-Allow-Origin", "*"); // 필요에 따라 Origin을 설정
+    response.headers.set("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
+    response.headers.set(
+      "Access-Control-Allow-Headers",
+      "Content-Type, Authorization"
+    );
+
+    return response;
   } catch (err) {
     console.error("Database query error", err);
     // 오류 발생 시 에러 메시지와 함께 500 상태 코드 반환
-    return NextResponse.json(
+    // return NextResponse.json(
+    //   { error: "Database query error" },
+    //   { status: 500 }
+    // );
+    const response = NextResponse.json(
       { error: "Database query error" },
       { status: 500 }
     );
+    response.headers.set("Access-Control-Allow-Origin", "*"); // 필요에 따라 Origin을 설정
+    response.headers.set("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
+    response.headers.set(
+      "Access-Control-Allow-Headers",
+      "Content-Type, Authorization"
+    );
+    return response;
   } //(*try-catch)
 }
 
