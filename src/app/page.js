@@ -5,7 +5,7 @@ import Image from "next/image";
 export default function Home() {
   return (
     <main>
-      <h1>한재호바아보~</h1>
+      <h1>main~</h1>
       {/* <ul>
         <li>
           <a href="/list">리스트 테스트1</a>
