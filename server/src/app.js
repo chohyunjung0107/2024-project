@@ -10,15 +10,18 @@ const io = socketIO(server, {
   cors: { origin: "*", methods: ["GET", "POST"] },
   allowedHeaders: ["Content-Type"],
 });
+const handle = app.getRequestHandler();
 
 const port = 5000;
-let num = 0;
 
 app.use(
   cors({
-    origin: "*",
-    methods: ["GET", "POST"],
-    allowedHeaders: ["Content-Type"],
+    origin: "*", // 필요에 따라 특정 Origin을 설정
+    methods: ["GET", "POST", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+    credentials: true,
+  })(req, res, () => {
+    handle(req, res, parsedUrl);
   })
 );
 
