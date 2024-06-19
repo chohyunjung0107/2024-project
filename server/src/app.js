@@ -7,13 +7,20 @@ const app = express();
 const server = http.createServer(app);
 const io = socketIO(server, {
   path: "/socket.io",
-  cors: { origin: "*" },
+  cors: { origin: "*", methods: ["GET", "POST"] },
+  allowedHeaders: ["Content-Type"],
 });
 
 const port = 5000;
 let num = 0;
 
-app.use(cors());
+app.use(
+  cors({
+    origin: "*",
+    methods: ["GET", "POST"],
+    allowedHeaders: ["Content-Type"],
+  })
+);
 
 server.listen(port, () => {
   console.log("소켓io port " + port);
@@ -47,5 +54,6 @@ io.on("connection", (socket) => {
 
   socket.on("disconnect", () => {
     console.log("클라이언트 접속 해제", socket.id);
+    clearInterval(socket.interval); // 연결 해제 시 인터벌 정리
   });
 });
