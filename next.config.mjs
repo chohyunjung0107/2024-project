@@ -3,7 +3,7 @@ const nextConfig = {
   async rewrites() {
     return [
       {
-        source: "/:path*",
+        source: "10.10.0.145/:path*",
         destination: "10.10.0.145/:path*",
       },
     ];
