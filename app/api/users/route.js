@@ -21,7 +21,7 @@ pool.getConnection((err, conn) => {
 export async function GET(req) {
   try {
     // 데이터베이스에서 데이터를 쿼리
-    const [rows] = await pool.query("select * from test.test_table");
+    const [rows] = await pool.query("select * from testdb.testdb");
     // 쿼리 결과를 JSON 형태로 반환
 
     const response = NextResponse.json(rows);
