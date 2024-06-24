@@ -40,6 +40,23 @@ export default function Socket() {
     }
   };
 
+  //TEST GET 
+  const testGetData = async () => {
+    setLoading(true);
+    try {
+      const response = await fetch(`http://10.10.0.218:3000/api/users`);
+      const result = await response.json();
+
+      console.log("testData 성공!")
+      setData(result);
+    } catch (err) {
+      console.log("testData 실패!")
+      console.error("error:", err);
+    } finally {
+      setLoading(false);
+    }
+  }; 
+
   //POST
   const handlePostData = async () => {
     try {
@@ -105,12 +122,15 @@ export default function Socket() {
 
   //api호출 use
   useEffect(() => {
+    //
+    testGetData()
+    //
     getData();
   }, []);
 
-  useEffect(() => {
-    console.log("testNum", testNum);
-  }, [testNum]);
+  // useEffect(() => {
+  //   console.log("testNum", testNum);
+  // }, [testNum]);
 
   return (
     <>
@@ -125,7 +145,7 @@ export default function Socket() {
             }
           }}
         />
-        <button onClick={handlePostData}>수정</button>
+        <button onClick={handlePostData}>수정s</button>
         {loading === true ? (
           <Loading />
         ) : (
@@ -134,7 +154,7 @@ export default function Socket() {
             return (
               <div key={v.id}>
                 <div>name : {v.name}</div>
-                <div>country : {v.country}</div>
+                <div>ouccupation : {v.ouccupation}</div>
               </div>
             );
           })
