@@ -2,6 +2,7 @@ const express = require("express");
 const http = require("http");
 const cors = require("cors");
 const socketIO = require("socket.io");
+const mysql = require("mysql2");
 
 const app = express();
 const server = http.createServer(app);
@@ -12,7 +13,33 @@ const io = socketIO(server, {
 });
 
 const port = 5000;
+//db
+app.set("posrt", 3001);
+app.set("host", '10.10.0.218')
 
+//db연결
+var db_info = {
+  host: '10.10.0.218',
+  user: 'root',
+  password: '1234',
+  database: 'MYSQL',
+  port: 3307,
+}
+
+//db
+module.exports = {
+  init: function () {
+    return mysql.createConnection(db_info);
+  },
+  connect: function (conn) {
+    conn.connect(function (err) {
+      if (err) console.error("mysql connection error : " + err);
+      else console.log("mysql is connected successfully!");
+    });
+  },
+};
+
+// app.use(cors());
 app.use(
   cors({
     origin: "*", // 필요에 따라 특정 Origin을 설정
@@ -21,6 +48,17 @@ app.use(
     credentials: true,
   })
 );
+
+
+
+//get 
+app.get('/api/plass', function(req, res){
+  var sql = "select * from testdb.testdb";
+  conn.query(sql, function(){
+    if(err) console.log("쿼리에러"+err)
+    else res.send(result)
+  })
+})
 
 server.listen(port, () => {
   console.log("소켓io port " + port);
