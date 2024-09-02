@@ -64,7 +64,7 @@ export async function POST(req) {
 
   const { name } = requestBody; // JSON 요청 본문에서 데이터를 추출
   const [result] = await pool.query(
-    `update test.test_table set name=? where id=2`,
+    `update testdb.testdb set name=? where id=1`,
     [name]
   );
 

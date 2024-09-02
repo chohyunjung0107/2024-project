@@ -15,7 +15,7 @@ const io = socketIO(server, {
 const port = 5000;
 //db
 app.set("posrt", 3001);
-app.set("host", '10.10.0.218')
+app.set("host", 'localhost')
 
 //db연결
 var db_info = {

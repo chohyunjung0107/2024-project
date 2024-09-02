@@ -1,3 +1,17 @@
-.test {
-  background: red;
+.wrap {
+  padding: 5px;
+  display: flex;
+  // flex-wrap: wrap;
+  // flex-direction: column;
+}
+
+.imgCard {
+  width: 50%;
+  background: #999;
+  padding: 5px;
+}
+.textCard {
+  width: 50%;
+  background: #555;
+  padding: 5px;
 }

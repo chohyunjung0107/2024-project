@@ -1,8 +1,8 @@
 "use client";
 import { useEffect, useState } from "react";
 import io from "socket.io-client";
-import Loading from "../../component/Loading"
-import axios from "axios"
+import Loading from "../../component/Loading";
+import axios from "axios";
 
 const SOCKET_SERVER_URL = "http://localhost:5000"; // 서버 URL을 설정하세요
 
@@ -41,31 +41,17 @@ export default function Socket() {
     }
   };
 
-  //TEST GET 
+  //TEST GET
   const testGetData = async () => {
-
-    axios.get('http://10.10.0.218:3001/api/plass',{
-      headers: {
-       'Access-Control-Allow-Origin': '*',
-      }
-    }).then((res)=>{
-      console.log("TEST API",res.data)
-    }).catch((err)=>{
-      console.error(err,"test api err")
-    })
-    // try {
-    //   const response = await fetch(`http://10.10.0.218:3001/api/plass`);
-    //   const result = await response.json();
-
-    //   console.log("testData 성공!")
-    //   setData(result);
-    // } catch (err) {
-    //   console.log("testData 실패!")
-    //   console.error("error:", err);
-    // } finally {
-    //   setLoading(false);
-    // }
-  }; 
+    axios
+      .get("http://10.10.0.195:3001/api/users")
+      .then((res) => {
+        console.log("TEST API", res.data);
+      })
+      .catch((err) => {
+        console.error(err, "test api err");
+      });
+  };
 
   //POST
   const handlePostData = async () => {
@@ -133,11 +119,10 @@ export default function Socket() {
   //api호출 use
   useEffect(() => {
     //
-    testGetData()
+    testGetData();
     //
     getData();
   }, []);
-
 
   return (
     <>
