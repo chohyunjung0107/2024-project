@@ -44,7 +44,7 @@ export default function Socket() {
   //TEST GET
   const testGetData = async () => {
     axios
-      .get("http://10.10.0.195:3001/api/users")
+      .get("http://localhost:3001/api/users")
       .then((res) => {
         console.log("TEST API", res.data);
       })
