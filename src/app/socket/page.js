@@ -30,7 +30,7 @@ export default function Socket() {
   const getData = async () => {
     setLoading(true);
     try {
-      const response = await fetch(`/api/users`);
+      const response = await fetch(`http://localhost:3001/api/users`);
       const result = await response.json();
 
       setData(result);
